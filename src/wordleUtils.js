@@ -37,7 +37,6 @@ export function isCorrectAnswer(answer, guess) {
         }
       }
     }
-  
-    console.log(answerArr.join(''), guessArr.join(''), result);
+
     return result;
 }

@@ -27,6 +27,7 @@ function App() {
   );
 
   const [answer, setAnswer] = useState(getRandomWord());
+  console.log(answer)
 
   const getCurrentWord = () => {
     return grid[currentRow].join('');
