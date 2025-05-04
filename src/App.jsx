@@ -166,7 +166,7 @@ function App() {
             {row.split('').map((key) => (
               <button
                 key={key}
-                className={`flex justify-center w-10 h-12 rounded text-lg font-semibold hover:bg-gray-300 ${
+                className={`flex justify-center sm:w-12 sm:h:14 w-10 h-12 rounded text-lg font-semibold hover:bg-gray-300 ${
                   colorClasses[keyboardColors[key]] || 'bg-gray-200'
                 }`}
                 onClick={() =>
