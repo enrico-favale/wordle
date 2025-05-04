@@ -4,6 +4,11 @@ import { getRandomWord, isValidWord, isCorrectAnswer } from './wordleUtils';
 import './App.css';
 
 function App() {
+  const [message, setMessage] = useState('');
+  useEffect(() => {
+    setMessage('Try to guess the word!');
+  }, []);
+
   const rows = 6;
   const cols = 5;
 
@@ -27,7 +32,6 @@ function App() {
   );
 
   const [answer, setAnswer] = useState(getRandomWord());
-  console.log(answer)
 
   const getCurrentWord = () => {
     return grid[currentRow].join('');
@@ -106,15 +110,15 @@ function App() {
         updateKeyboardColors(word, result);
 
         if (word === answer) {
-          alert('Hai indovinato la parola!');
+          setMessage(`You guessed the word right! The word was: ${answer}`);
         } else if (currentRow < rows - 1) {
           setCurrentRow((prev) => prev + 1);
           setCurrentCol(0);
         } else {
-          alert(`Hai esaurito i tentativi! La parola era: ${answer}`);
+          setMessage(`You lose! The word was: ${answer}`);
         }
       } else {
-        alert('Parola non valida!');
+        alert('Word not valid!');
       }
     }
   };
@@ -131,7 +135,7 @@ function App() {
     >
       <div id="title" className="border-b border-gray-500 pb-2 mb-4">
         <h1 className="uppercase text-2xl font-bold mb-1">Wordle</h1>
-        <span className="italic text-sm">Try to guess the word!</span>
+        <span className="italic text-sm">{message}</span>
       </div>
 
       <div id="input-rows" className="space-y-2 border-b border-gray-500 pb-4">
